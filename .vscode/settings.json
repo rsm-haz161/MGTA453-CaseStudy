@@ -1,0 +1,98 @@
+{
+  "editor.bracketPairColorization.enabled": true,
+  "editor.fontFamily": "MesloLGS NF, Menlo, Monaco, 'Courier New', monospace",
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.guides.bracketPairs": true,
+  "editor.guides.bracketPairsHorizontal": false,
+  "editor.inlineSuggest.enabled": true,
+  "editor.renderWhitespace": "all",
+  "editor.unicodeHighlight.ambiguousCharacters": false,
+  "editor.wordWrap": "on",
+  "editor.tabCompletion": "on",
+  "editor.acceptSuggestionOnEnter": "smart",
+  "files.eol": "\n",
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "files.trimTrailingWhitespace": true,
+  "window.confirmSaveUntitledWorkspace": false,
+  "explorer.confirmDelete": true,
+  "explorer.confirmDragAndDrop": false,
+  "explorer.confirmPasteNative": false,
+  "terminal.external.osxExec": "iTerm.app",
+  "terminal.external.windows": "wt.exe",
+  "terminal.integrated.allowChords": false,
+  "terminal.integrated.defaultProfile.osx": "zsh",
+  "terminal.integrated.defaultProfile.windows": "WSL",
+  "terminal.integrated.enableMultiLinePasteWarning": "never",
+  "terminal.integrated.fontFamily": "MesloLGS NF",
+  "terminal.integrated.fontLigatures.enabled": true,
+  "terminal.integrated.inheritEnv": true,
+  "terminal.integrated.suggest.enabled": true,
+  "git.autofetch": true,
+  "git.confirmSync": false,
+  "git.enableSmartCommit": true,
+  "git.openRepositoryInParentFolders": "always",
+  "git.defaultCloneDirectory": "~/git",
+  "github.gitProtocol": "ssh",
+  "python.terminal.activateEnvironment": false,
+  "python.terminal.activateEnvInCurrentTerminal": false,
+  "python.testing.pytestEnabled": true,
+  "interactiveWindow.collapseCellInputCode": "never",
+  "interactiveWindow.executeWithShiftEnter": true,
+  "ipynb.pasteImagesAsAttachments.enabled": false,
+  "jupyter.askForKernelRestart": false,
+  "jupyter.interactiveWindow.textEditor.autoMoveToNextCell": false,
+  "jupyter.interactiveWindow.textEditor.executeSelection": true,
+  "notebook.defaultFormatter": "charliermarsh.ruff",
+  "notebook.formatOnCellExecution": true,
+  "notebook.formatOnSave.enabled": true,
+  "notebook.lineNumbers": "on",
+  "[python]": {
+    "editor.defaultFormatter": "charliermarsh.ruff"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[quarto]": {
+    "editor.defaultFormatter": "charliermarsh.ruff"
+  },
+  "quarto.render.renderOnSave": true,
+  "cSpell.customDictionaries": {
+    "custom-dictionary-user": {
+      "name": "custom-dictionary-user",
+      "path": "~/.config/cspell/custom-dictionary-user.txt",
+      "addWords": true,
+      "scope": "user"
+    }
+  },
+  "cSpell.ignoreWords": [],
+  "cSpell.userWords": [],
+  "code-eol.crlfCharacter": "\u00a4\u00ac",
+  "code-eol.decorateBeforeEol": true,
+  "code-eol.highlightExtraWhitespace": true,
+  "code-eol.highlightNonDefault": true,
+  "code-eol.newlineCharacter": "\u00ac",
+  "code-eol.returnCharacter": "\u00a4",
+  "dataWrangler.outputRenderer.enabled": false,
+  "remote.autoForwardPortsSource": "hybrid",
+  "security.workspace.trust.untrustedFiles": "open",
+  "workbench.colorTheme": "Default Dark Modern",
+  "security.allowedUNCHosts": [
+    "wsl.localhost"
+  ],
+  "terminal.integrated.enableImages": true,
+  "direnv.restart.automatic": true,
+  "python.defaultInterpreterPath": "/Users/areil/rsm-msba/.rsm-msba/envs/nix-uv/bin/python",
+  "files.exclude": {
+    "**/.rsm-msba": true,
+    "**/.direnv": true
+  },
+  "terminal.integrated.env.linux": {
+    "ZDOTDIR": "/Users/areil/rsm-msba/.rsm-msba/zsh"
+  },
+  "terminal.integrated.env.osx": {
+    "ZDOTDIR": "/Users/areil/rsm-msba/.rsm-msba/zsh"
+  },
+  "terminal.integrated.defaultProfile.linux": "zsh"
+}

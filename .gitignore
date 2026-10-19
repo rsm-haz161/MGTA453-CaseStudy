@@ -1,0 +1,8 @@
+.venv/
+.direnv/
+__pycache__/
+*.pyc
+.claude/.last-test-time
+.claude/settings.local.json
+.claude/bin/
+.claude/usage-log/.github-user

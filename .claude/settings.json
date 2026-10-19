@@ -1,0 +1,129 @@
+{
+  "_notes": {
+    "_rsmManaged": true,
+    "_about": "Managed by the RSM-MSBA Nix environment (rsm-claude-settings). Refreshed on each rsm-setup / rsm-mkdir run. Delete the _rsmManaged marker to take ownership and stop it being overwritten. Strict JSON has no // comments, so docs live here and in _comment fields on each hook block.",
+    "permissions.allow": "File creation/editing (Write/Edit), safe read-only inspection (cat/ls/pwd/echo/head/tail/wc/find/tree/which), network fetches (curl/wget), git read-only + safe writes (status/diff/log/show/branch/checkout/switch/add/commit/stash/restore), uv environment + package management (venv/add/remove/run/sync/lock/tree/python/tool), just, and activating .venv before uv run.",
+    "permissions.deny": "Block every non-uv install path (pip, pip3, python -m pip, uv pip install/uninstall) so pyproject.toml and uv.lock stay authoritative.",
+    "permissions.ask": "Always prompt for file/directory deletion (rm/rmdir), remote shell / file transfer (ssh/scp/sftp), and destructive git operations (push/reset/rebase/merge/cherry-pick/clean).",
+    "permissions.defaultMode": "default = show every permission prompt instead of silently accepting edits. Teaches students what Claude is doing on their behalf."
+  },
+  "permissions": {
+    "allow": [
+      "Write",
+      "Edit",
+      "Bash(cat:*)",
+      "Bash(ls:*)",
+      "Bash(pwd)",
+      "Bash(echo:*)",
+      "Bash(head:*)",
+      "Bash(tail:*)",
+      "Bash(wc:*)",
+      "Bash(find:*)",
+      "Bash(tree:*)",
+      "Bash(which:*)",
+      "Bash(curl:*)",
+      "Bash(wget:*)",
+      "Bash(just:*)",
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git show:*)",
+      "Bash(git branch:*)",
+      "Bash(git checkout:*)",
+      "Bash(git switch:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git stash:*)",
+      "Bash(git restore:*)",
+      "Bash(uv venv:*)",
+      "Bash(uv add:*)",
+      "Bash(uv remove:*)",
+      "Bash(uv run:*)",
+      "Bash(uv sync:*)",
+      "Bash(uv lock:*)",
+      "Bash(uv tree:*)",
+      "Bash(uv python:*)",
+      "Bash(uv tool:*)",
+      "Bash(uvx:*)",
+      "Bash(source .venv/bin/activate && uv run:*)",
+      "Bash(source .venv/bin/activate)",
+      "Bash(deactivate)"
+    ],
+    "deny": [
+      "Bash(pip:*)",
+      "Bash(pip3:*)",
+      "Bash(python -m pip:*)",
+      "Bash(python3 -m pip:*)",
+      "Bash(uv pip install:*)",
+      "Bash(uv pip uninstall:*)"
+    ],
+    "ask": [
+      "Bash(rm:*)",
+      "Bash(rmdir:*)",
+      "Bash(ssh:*)",
+      "Bash(scp:*)",
+      "Bash(sftp:*)",
+      "Bash(git push:*)",
+      "Bash(git reset:*)",
+      "Bash(git rebase:*)",
+      "Bash(git merge:*)",
+      "Bash(git cherry-pick:*)",
+      "Bash(git clean:*)"
+    ],
+    "defaultMode": "default"
+  },
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "_comment": "Log each prompt into .claude/usage-log/ for instructor review — ONLY in course-org (rsm-msba-*) repos. File contents and tool results are never logged.",
+        "hooks": [
+          { "type": "command", "command": "bash .claude/hooks/usage-log.sh" }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "_comment": "Log each tool call (name + short summary only) — course-org repos only.",
+        "matcher": ".*",
+        "hooks": [
+          { "type": "command", "command": "bash .claude/hooks/usage-log.sh" }
+        ]
+      },
+      {
+        "_comment": "Before every git commit: auto-stage the usage log (course-org repos only), then scan staged files for secret-like patterns (API keys, private keys, .env files).",
+        "matcher": "Bash",
+        "hooks": [
+          { "type": "command", "command": "bash .claude/hooks/auto-stage-log.sh", "if": "Bash(git commit:*)" },
+          { "type": "command", "command": "bash .claude/hooks/secret-scan.sh", "if": "Bash(git commit:*)" }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "_comment": "Record a timestamp whenever pytest runs; the stale-tests Stop hook compares it against Python file mtimes.",
+        "matcher": "Bash",
+        "hooks": [
+          { "type": "command", "command": "bash .claude/hooks/save-test-time.sh", "if": "Bash(pytest:*)" },
+          { "type": "command", "command": "bash .claude/hooks/save-test-time.sh", "if": "Bash(uv run pytest:*)" },
+          { "type": "command", "command": "bash .claude/hooks/save-test-time.sh", "if": "Bash(source .venv/bin/activate && uv run pytest:*)" }
+        ]
+      },
+      {
+        "_comment": "Auto-format Python files with ruff after Claude writes or edits them (via uvx, so it works before ruff is a dep).",
+        "matcher": "Write|Edit",
+        "hooks": [
+          { "type": "command", "command": "bash .claude/hooks/ruff-format.sh" }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "_comment": "On Stop: remind (do not block) if Python sources changed since the last pytest run, then surface any ruff findings.",
+        "hooks": [
+          { "type": "command", "command": "bash .claude/hooks/check-stale-tests.sh" },
+          { "type": "command", "command": "bash .claude/hooks/ruff-check.sh" }
+        ]
+      }
+    ]
+  }
+}

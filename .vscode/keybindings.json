@@ -1,0 +1,47 @@
+[
+    {
+        "key": "cmd+enter",
+        "command": "runCommands",
+        "args": {
+          "commands": [
+            "workbench.action.terminal.runSelectedText",
+            "cursorDown"
+          ]
+        },
+        "when": "editorLangId matches /(shellscript|markdown|quarto|python|sql)/"
+    },
+    {
+        "key": "ctrl+enter",
+        "command": "runCommands",
+        "args": {
+          "commands": [
+            "workbench.action.terminal.runSelectedText",
+            "cursorDown"
+          ]
+        },
+        "when": "editorLangId matches /(shellscript|markdown|quarto|python|sql)/"
+    },
+    {
+        "key": "ctrl+enter",
+        "command": "notebook.cell.executeAndFocusContainer",
+        "when": "notebookCellListFocused || editorTextFocus && inputFocus && notebookEditorFocused"
+    },
+    {
+        "key": "ctrl+alt+i",
+        "command": "quarto.insertCodeCell",
+        "when": "editorTextFocus && !findInputFocussed && !replaceInputFocussed && editorLangId == 'quarto'"
+    },
+    {
+        "key": "shift+cmd+i",
+        "command": "-quarto.insertCodeCell",
+        "when": "editorTextFocus && !findInputFocussed && !replaceInputFocussed && editorLangId == 'quarto'"
+    },
+    {
+      "key": "ctrl+shift+a",
+      "command": "-cursorLineStartSelect"
+    },
+    {
+      "key": "ctrl+shift+w",
+      "command": "-workbench.action.closeWindow"
+    }
+]
