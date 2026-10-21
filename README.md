@@ -1,9 +1,9 @@
 # MGTA453 - Case Study
 
 Collaborators:
-Haolin Zhang
-Hung-Che Wang
-Zixiao Ma
+Haolin Zhang<br>
+Hung-Che Wang<br>
+Zixiao Ma<br>
 
 | Index | Case |
 |---|---|
