@@ -5,6 +5,6 @@ Haolin Zhang
 Hung-Che Wang
 Zixiao Ma
 
-| Index | Case | Folder |
-|---|---|---|
-| 2 | Shared Social Responsibility | (SSR/) |
+| Index | Case |
+|---|---|
+| 2 | Shared Social Responsibility(SSR/) |
