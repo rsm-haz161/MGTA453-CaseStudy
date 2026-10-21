@@ -1,9 +1,10 @@
 # MGTA453 - Case Study
 
-Collaborators:
-Haolin Zhang<br>
-Hung-Che Wang<br>
-Zixiao Ma<br>
+## Group 10
+Collaborators:<br>
+- Haolin Zhang<br>
+- Hung-Che Wang<br>
+- Zixiao Ma<br>
 
 | Index | Case |
 |---|---|
