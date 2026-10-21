@@ -7,4 +7,4 @@ Zixiao Ma
 
 | Index | Case |
 |---|---|
-| 2 | Shared Social Responsibility(SSR/) |
+| 2 | [Shared Social Responsibility](SSR/) |
