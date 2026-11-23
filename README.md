@@ -8,6 +8,6 @@ Collaborators:<br>
 
 | Index | Case |
 |---|---|
-| 2 | [Shared Social Responsibility](SSR/) |
-| 3 | [Ontario Gateway](OG/) |
-| 4 | [Hot Hand](HH/) |
+| 2 | [Shared Social Responsibility](SharedSocialResponsibility/) |
+| 3 | [Ontario Gateway](OntarioGateway/) |
+| 4 | [Hot Hand](HotHand/) |
